@@ -23,7 +23,7 @@ describe('Spread syntax에 대해 학습합니다.', function () {
   });
 
   it('여러 개의 객체를 병합할 수 있습니다.', function () {
-    const fullPre = {
+    const section1 = {
       cohort: 7,
       duration: 4,
       mentor: 'hongsik',
@@ -32,7 +32,7 @@ describe('Spread syntax에 대해 학습합니다.', function () {
     const me = {
       time: '0156',
       status: 'sleepy',
-      todos: ['coplit', 'koans'],
+      todos: ['javascript', 'koans'],
     };
 
     const merged = { FILL_ME_IN, FILL_ME_IN };
@@ -45,7 +45,7 @@ describe('Spread syntax에 대해 학습합니다.', function () {
       mentor: 'hongsik',
       time: '0156',
       status: 'sleepy',
-      todos: ['coplit', 'koans'],
+      todos: ['javascript', 'koans'],
     });
   });
 
@@ -117,6 +117,8 @@ describe('Spread syntax에 대해 학습합니다.', function () {
     }
     expect(makePizza('original')).to.equal(FILL_ME_IN);
     expect(makePizza('thin', 'pepperoni')).to.equal(FILL_ME_IN);
-    expect(makePizza('napoli', 'meat', 'extra cheese', 'onion', 'bacon')).to.equal(FILL_ME_IN);
+    expect(
+      makePizza('napoli', 'meat', 'extra cheese', 'onion', 'bacon')
+    ).to.equal(FILL_ME_IN);
   });
 });
