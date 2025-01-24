@@ -40,7 +40,7 @@ describe('primitive data type과 reference data type에 대해서 학습합니�
   });
 
   it('원시 자료형 또는 원시 자료형의 데이터를 함수의 인자로 전달할 경우, 값 자체의 복사가 일어납니다.', function () {
-    let currentYear = 2020;
+    let currentYear = 2025;
     function afterTenYears(year) {
       year = year + 10;
     }
