@@ -1,10 +1,10 @@
-describe('구조 분해 할당(Destructing Assignment)에 관해서', () => {
+describe('구조 분해 할당(Destructuring Assignment)에 관해서', () => {
   it('배열을 분해합니다', () => {
     const array = ['rocket', 'boost', 'im', 'course'];
 
     const [first, second] = array;
-    expect(first).to.eql(FILL_ME_IN);
-    expect(second).to.eql(FILL_ME_IN);
+    expect(first).to.eql('rocket'); // ✅ 첫 번째 요소
+    expect(second).to.eql('boost'); // ✅ 두 번째 요소
 
     const result = [];
     function foo([first, second]) {
@@ -13,17 +13,14 @@ describe('구조 분해 할당(Destructing Assignment)에 관해서', () => {
     }
 
     foo(array);
-    expect(result).to.eql(['boost', 'rocket']);
+    expect(result).to.eql(['boost', 'rocket']); // ✅ 예상 결과
   });
 
   it('rest/spread 문법을 배열 분해에 적용할 수 있습니다', () => {
     const array = ['rocket', 'boost', 'im', 'course'];
     const [start, ...rest] = array;
-    expect(start).to.eql(FILL_ME_IN);
-    expect(rest).to.eql(FILL_ME_IN);
-
-    // 다음과 같은 문법은 사용할 수 없습니다. 할당하기 전 왼쪽에는, rest 문법 이후에 쉼표가 올 수 없습니다
-    // const [first, ...middle, last] = array
+    expect(start).to.eql('rocket'); // ✅ 첫 번째 요소
+    expect(rest).to.eql(['boost', 'im', 'course']); // ✅ 나머지 요소들
   });
 
   it('객체의 단축(shorthand) 문법을 익힙니다', () => {
@@ -35,22 +32,22 @@ describe('구조 분해 할당(Destructing Assignment)에 관해서', () => {
       age,
       level: 'Junior',
     };
-    expect(person).to.eql(FILL_ME_IN);
+    expect(person).to.eql({ name: 'eliceKim', age: 28, level: 'Junior' }); // ✅ 객체 단축 문법
   });
 
   it('객체를 분해합니다', () => {
     const student = { name: 'bobLee', major: '물리학과' };
 
     const { name } = student;
-    expect(name).to.eql(FILL_ME_IN);
+    expect(name).to.eql('bobLee'); // ✅ 객체 속성 분해
   });
 
   it('rest/spread 문법을 객체 분해에 적용할 수 있습니다 #1', () => {
     const student = { name: 'carolChoi', major: '물리학과' };
     const { name, ...args } = student;
 
-    expect(name).to.eql(FILL_ME_IN);
-    expect(args).to.eql(FILL_ME_IN);
+    expect(name).to.eql('carolChoi'); // ✅ name만 추출
+    expect(args).to.eql({ major: '물리학과' }); // ✅ 나머지 속성
   });
 
   it('rest/spread 문법을 객체 분해에 적용할 수 있습니다 #2', () => {
@@ -65,7 +62,7 @@ describe('구조 분해 할당(Destructing Assignment)에 관해서', () => {
       return `${name}님은 ${grade}의 성적으로 ${course}을 수강했습니다`;
     }
 
-    expect(getSummary(student)).to.eql(FILL_ME_IN);
+    expect(getSummary(student)).to.eql('carolChoi님은 B+의 성적으로 양자역학을 수강했습니다'); // ✅ 문자열 구성 확인
   });
 
   it('rest/spread 문법을 객체 분해에 적용할 수 있습니다 #3', () => {
@@ -101,10 +98,34 @@ describe('구조 분해 할당(Destructing Assignment)에 관해서', () => {
       },
     };
 
-    expect(changedUser).to.eql(FILL_ME_IN);
+    expect(changedUser).to.eql({
+      name: 'bobLee',
+      company: {
+        name: 'Rocket boost',
+        department: 'Development',
+        role: { name: 'Blockchain Engineer' },
+      },
+      age: 20,
+    });
 
-    expect(overwriteChanges).to.eql(FILL_ME_IN);
+    expect(overwriteChanges).to.eql({
+      name: 'eliceKim', // ✅ 기존 user의 name으로 덮어씀
+      company: {
+        name: 'Rocket boost',
+        department: 'Development',
+        role: { name: 'Blockchain Engineer' },
+      },
+      age: 35, // ✅ 기존 user의 age로 덮어씀
+    });
 
-    expect(changedDepartment).to.eql(FILL_ME_IN);
+    expect(changedDepartment).to.eql({
+      name: 'eliceKim',
+      company: {
+        name: 'Rocket boost',
+        department: 'Marketing', // ✅ department 변경
+        role: { name: 'Blockchain Engineer' },
+      },
+      age: 35,
+    });
   });
 });
